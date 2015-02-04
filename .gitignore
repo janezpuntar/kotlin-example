@@ -1,3 +1,4 @@
+
 # Created by https://www.gitignore.io
 
 #!! ERROR: andr is undefined. Use list command to see defined gitignore types !!#
@@ -29,6 +30,7 @@ proguard/
 
 # Log Files
 *.log
+
 
 
 ### Crashlytics ###
