@@ -29,7 +29,7 @@ abstract class Person(private var years: Int) {
 class Customer public (private val customerName: String, location: String?) : Person(years = 23), Money {
 
     {
-        Log.e("tag", "Customer initialized with value ${customerName}")
+        Log.e("tag", "Customer initialized with name ${customerName}")
     }
 
     private val location = location
@@ -66,3 +66,6 @@ class Customer public (private val customerName: String, location: String?) : Pe
 
 }
 
+class Work(var cus: Customer) { // Customer je private / public
+
+}

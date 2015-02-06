@@ -1,0 +1,15 @@
+language: android
+
+jdk:
+  - oraclejdk6
+  - openjdk6
+
+android:
+  components:
+    - build-tools-21.1.2
+    - android-21
+    
+branches:
+  only:
+    - master
+    - develop

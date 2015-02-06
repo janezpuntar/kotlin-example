@@ -9,12 +9,14 @@ import android.widget.ImageView
 import android.widget.Toast
 import android.widget.TextView
 import android.util.Log
+import android.net.Uri
+import java.io.File
 
 public class MainActivity : ActionBarActivity() {
 
-    var userName : String = "carlos alberto del castillo cabeza de vaca";
-    var lastName : String? = null;
-    var tvHelloWorld : TextView? = null;
+    var userName: String = "carlos alberto del castillo cabeza de vaca";
+    var lastName: String? = null;
+    var tvHelloWorld: TextView? = null;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,7 +28,7 @@ public class MainActivity : ActionBarActivity() {
         val knownCustomer = Customer(userName, "NY")
 
         Log.e("tag", "Location of ${unknownCustomer.myLocation()}")
-//        Log.e("tag", "Location of ${unknownCustomer?.location}")
+        //        Log.e("tag", "Location of ${unknownCustomer?.location}")
         Log.e("tag", "Location of ${knownCustomer.myLocation()}")
 
         Log.e("tag", "getYears ${unknownCustomer.getYears()}")
@@ -38,22 +40,25 @@ public class MainActivity : ActionBarActivity() {
         var attached = knownCustomer.attach("hover")
         Log.e("tag", "Attach ${attached}");
 
-        attached = knownCustomer.attach("hover", 23.4 )
+        attached = knownCustomer.attach("hover", 23.4)
         Log.e("tag", "Attach ${attached}");
 
         knownCustomer.reformat()
-        knownCustomer.reformat(subSequence = true)
+        knownCustomer.reformat(subSequence = true, capitalize = true )
 
         3.show();
         accumulate();
 
+        val croppedImage = Uri.fromFile(File("file")) : Uri;
 
-        tvHelloWorld?.setText("Hello ${userName}")
+        var authority = croppedImage.getAuthority() : String;
+        
+        tvHelloWorld?.setText("Hello ${userName} $authority")
         tvHelloWorld = findViewById(R.id.tv_hello_world) as TextView
-//        tvHelloWorld?.setText("Hello ${userName}")
+        //        tvHelloWorld?.setText("Hello ${userName}")
 
 
-        var imageView : ImageView = findViewById(R.id.iv_picture) as ImageView
+        var imageView: ImageView = findViewById(R.id.iv_picture) as ImageView
         Picasso.with(this).load("http://i.imgur.com/DvpvklR.png").into(imageView)
     }
 
@@ -74,22 +79,22 @@ public class MainActivity : ActionBarActivity() {
         }
     }
 
-    fun Int.show(){
+    fun Int.show() {
         Log.e("tag", "This number is $this")
     }
 
-    fun accumulate(){
+    fun accumulate() {
         var i = 0
 
-        fun add(){
+        fun add() {
             i++
         }
 
-        for (i in 1..10){
+        for (i in 1..10) {
             add()
         }
 
         Log.e("tag", "i is now $i")
     }
-//      It prints "i is now 10"
+    //      It prints "i is now 10"
 }
